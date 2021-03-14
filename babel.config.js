@@ -9,15 +9,20 @@ module.exports = {
         alias: {
           '@components': './src/components',
           '@screens': './src/screens',
-          '@navigation': '/navigation',
-          '@services': '/services',
-          '@styles': '/styles',
-          '@store': '/store',
-          '@utilities': '/utilities',
-          '@views': '/views',
-          '@hooks': '/hooks',
+          '@navigation': './src/navigation',
+          '@services': './src/services',
+          '@styles': './src/styles',
+          '@store': './src/store',
+          '@utilities': './src/utilities',
+          '@views': './src/views',
+          '@hooks': './src/hooks',
         },
       },
     ],
   ],
+  env: {
+    production: {
+      plugins: ['react-native-paper/babel'],
+    },
+  },
 };
