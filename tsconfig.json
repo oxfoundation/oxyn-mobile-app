@@ -41,6 +41,7 @@
     "paths": {
       "@context": ["context"],
       "@components": ["components"],
+      "@screens": ["screens"],
       "@graphql": ["graphql"],
       "@navigation": ["navigation"],
       "@services": ["services"],
