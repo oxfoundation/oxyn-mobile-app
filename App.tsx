@@ -12,7 +12,7 @@ import {HomeScreen, SplashScreen} from '@screens';
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [isLoading] = useState(true);
+  const [isLoading] = useState(false);
   const [userToken] = useState();
 
   if (isLoading) {
