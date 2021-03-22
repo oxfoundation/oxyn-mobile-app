@@ -12,6 +12,7 @@ const SplashScreen: FunctionComponent<SplashScreenProps> = () => {
 };
 
 export default SplashScreen;
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

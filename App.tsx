@@ -1,35 +1,79 @@
 import React, {useState} from 'react';
-import {} from 'react-native';
 
-import {Provider as PaperProvider} from 'react-native-paper';
+import {Provider as PaperProvider, Colors} from 'react-native-paper';
 
 import {theme} from '@styles';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {HomeScreen, SplashScreen} from '@screens';
+import {
+  DashboardScreen,
+  ForgotPasswordScreen,
+  HomeScreen,
+  RegisterScreen,
+  SplashScreen,
+  LoginScreen,
+} from '@screens';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   const [isLoading] = useState(false);
-  const [userToken] = useState();
+  const [isLoggedIn] = useState(true);
 
   if (isLoading) {
     // We haven't finished checking for the token yet
     return <SplashScreen />;
   }
 
+  const authenticatedScreenOptions = {
+    headerShown: false,
+    cardStyle: {backgroundColor: Colors.white},
+  };
+
+  const authenticationScreens = [
+    {
+      name: 'HomeScreen',
+      component: HomeScreen,
+      options: authenticatedScreenOptions,
+    },
+    {
+      name: 'RegisterScreen',
+      component: RegisterScreen,
+      options: authenticatedScreenOptions,
+    },
+    {
+      name: 'LoginScreen',
+      component: LoginScreen,
+      options: authenticatedScreenOptions,
+    },
+    {
+      name: 'ForgotPasswordScreen',
+      component: ForgotPasswordScreen,
+      options: authenticatedScreenOptions,
+    },
+  ];
+
+  const protectedScreens = [
+    {
+      name: 'DashboardScreen',
+      component: DashboardScreen,
+      options: {},
+    },
+  ];
+
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
-          {userToken == null ? (
-            <>
-              <Stack.Screen name="Home" component={HomeScreen} />
-            </>
-          ) : (
-            <Stack.Screen name="Home" component={HomeScreen} />
+          {[...(isLoggedIn ? protectedScreens : authenticationScreens)].map(
+            (screen) => (
+              <Stack.Screen
+                name={screen.name}
+                component={screen.component}
+                options={screen.options}
+              />
+            ),
           )}
         </Stack.Navigator>
       </NavigationContainer>

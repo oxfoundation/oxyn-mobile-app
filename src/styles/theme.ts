@@ -3,7 +3,7 @@ import {DefaultTheme} from 'react-native-paper';
 declare global {
   namespace ReactNativePaper {
     interface ThemeColors {
-      myOwnColor: string;
+      secondary: string;
     }
 
     interface Theme {
@@ -17,9 +17,12 @@ const theme = {
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#84DD72',
-    accent: '#212529',
-    myOwnColor: '#BADA55',
+    // primary: '#84DD72',
+    // accent: '#212529',
+    // secondary: '#BADA55',
+    primary: '#600EE6',
+    secondary: '#414757',
+    error: '#f13a59',
   },
   // Specify custom property
   myOwnProperty: true,
