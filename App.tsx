@@ -3,7 +3,10 @@ import React, {useState} from 'react';
 import {Provider as PaperProvider, Colors} from 'react-native-paper';
 
 import {theme} from '@styles';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme as NavigationDefaultTheme,
+} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {
@@ -15,11 +18,13 @@ import {
   LoginScreen,
 } from '@screens';
 
+// combine paper and react navigation themes
+
 const Stack = createStackNavigator();
 
 const App = () => {
   const [isLoading] = useState(false);
-  const [isLoggedIn] = useState(true);
+  const [isLoggedIn] = useState(false);
 
   if (isLoading) {
     // We haven't finished checking for the token yet
@@ -64,7 +69,7 @@ const App = () => {
 
   return (
     <PaperProvider theme={theme}>
-      <NavigationContainer>
+      <NavigationContainer theme={NavigationDefaultTheme}>
         <Stack.Navigator>
           {[...(isLoggedIn ? protectedScreens : authenticationScreens)].map(
             (screen) => (

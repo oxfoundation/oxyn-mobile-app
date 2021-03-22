@@ -1,3 +1,3 @@
-import theme from './theme';
+import {theme, navigationTheme} from './theme';
 
-export {theme};
+export {theme, navigationTheme};
