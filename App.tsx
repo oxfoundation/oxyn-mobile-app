@@ -72,8 +72,9 @@ const App = () => {
       <NavigationContainer theme={NavigationDefaultTheme}>
         <Stack.Navigator>
           {[...(isLoggedIn ? protectedScreens : authenticationScreens)].map(
-            (screen) => (
+            (screen, index) => (
               <Stack.Screen
+                key={`stack-screen-${index}`}
                 name={screen.name}
                 component={screen.component}
                 options={screen.options}
