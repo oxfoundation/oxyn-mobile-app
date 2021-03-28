@@ -4,21 +4,46 @@ import {Button as PaperButton} from 'react-native-paper';
 import {theme} from '@styles';
 
 type PaperButtonType = ComponentProps<typeof PaperButton>;
-type Props = Omit<PaperButtonType, 'children'> & {title: string};
+type Props = Omit<PaperButtonType, 'children'> & {
+  title: string;
+  color?: string;
+};
 
-const Button = ({mode, style, title, ...props}: Props) => (
-  <PaperButton
-    style={[
-      styles.button,
-      mode === 'outlined' && {backgroundColor: theme.colors.surface},
-      style,
-    ]}
-    labelStyle={styles.text}
-    mode={mode}
-    {...props}>
-    {title}
-  </PaperButton>
-);
+const Button = ({mode, style, title, color, ...props}: Props) => {
+  // define theme color
+  let mainThemeColor;
+  switch (color) {
+    case 'facebook':
+      mainThemeColor = theme.colors?.facebook;
+
+      break;
+    case 'twitter':
+      mainThemeColor = theme.colors?.twitter;
+      break;
+    case 'google':
+      mainThemeColor = theme.colors?.google;
+      break;
+    case 'instagram':
+      mainThemeColor = theme.colors?.instagram;
+      break;
+
+    default:
+      mainThemeColor = theme.colors?.primary;
+      break;
+  }
+  console.log('backgroundColor:', mainThemeColor);
+
+  return (
+    <PaperButton
+      color={mainThemeColor}
+      style={[styles.button, style]}
+      labelStyle={styles.text}
+      mode={mode}
+      {...props}>
+      {title}
+    </PaperButton>
+  );
+};
 
 const styles = StyleSheet.create({
   button: {

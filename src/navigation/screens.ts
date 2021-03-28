@@ -7,8 +7,12 @@ import {
 } from '@screens';
 import {Colors} from 'react-native-paper';
 
-const authenticatedScreenOptions = {
+const unprotectedScreenOptions = {
   headerShown: false,
+  cardStyle: {backgroundColor: Colors.white},
+};
+
+const protectedScreenOptions = {
   cardStyle: {backgroundColor: Colors.white},
 };
 
@@ -16,31 +20,31 @@ export const screens = [
   {
     name: 'HomeScreen',
     component: HomeScreen,
-    options: authenticatedScreenOptions,
+    options: unprotectedScreenOptions,
     isProtected: false,
   },
   {
     name: 'RegisterScreen',
     component: RegisterScreen,
-    options: authenticatedScreenOptions,
+    options: unprotectedScreenOptions,
     isProtected: false,
   },
   {
     name: 'LoginScreen',
     component: LoginScreen,
-    options: authenticatedScreenOptions,
+    options: unprotectedScreenOptions,
     isProtected: false,
   },
   {
     name: 'ForgotPasswordScreen',
     component: ForgotPasswordScreen,
-    options: authenticatedScreenOptions,
+    options: unprotectedScreenOptions,
     isProtected: false,
   },
   {
     name: 'DashboardScreen',
     component: DashboardScreen,
-    options: {},
+    options: protectedScreenOptions,
     isProtected: true,
   },
 ];

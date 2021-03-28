@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Logo, Header, Paragraph, Background} from '@components';
 import {useNavigation} from '@react-navigation/native';
+import {Button as PaperButton} from 'react-native-paper';
 
 interface HomeScreenProps {}
 
@@ -16,6 +17,18 @@ const HomeScreen: React.FunctionComponent<HomeScreenProps> = () => {
           The easiest way to start with your amazing application.
         </Paragraph>
 
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate('LoginScreen')}
+          title="Facebook"
+          color="facebook"
+        />
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate('LoginScreen')}
+          title="Twitter"
+          color="twitter"
+        />
         <Button
           mode="contained"
           onPress={() => navigation.navigate('LoginScreen')}
