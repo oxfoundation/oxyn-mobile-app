@@ -1,9 +1,13 @@
 import React, {memo} from 'react';
 import {Background, Logo, Header, Paragraph, Button} from '@components';
 import {useNavigation} from '@react-navigation/core';
+import {useAppDispatch} from '@hooks';
+import {auth} from '@store';
 
 const Dashboard = () => {
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
+
   return (
     <Background>
       <Logo />
@@ -14,7 +18,9 @@ const Dashboard = () => {
       </Paragraph>
       <Button
         mode="outlined"
-        onPress={() => navigation.navigate('HomeScreen')}
+        onPress={() => {
+          dispatch(auth.action.logout());
+        }}
         title="Logout"
       />
     </Background>
