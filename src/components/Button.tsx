@@ -31,7 +31,6 @@ const Button = ({mode, style, title, color, ...props}: Props) => {
       mainThemeColor = theme.colors?.primary;
       break;
   }
-  console.log('backgroundColor:', mainThemeColor);
 
   return (
     <PaperButton
