@@ -17,6 +17,8 @@ import {
   SplashScreen,
   LoginScreen,
 } from '@screens';
+import {store} from './src/store/configuration';
+import {Provider} from 'react-redux';
 
 // combine paper and react navigation themes
 
@@ -68,22 +70,24 @@ const App = () => {
   ];
 
   return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer theme={NavigationDefaultTheme}>
-        <Stack.Navigator>
-          {[...(isLoggedIn ? protectedScreens : authenticationScreens)].map(
-            (screen, index) => (
-              <Stack.Screen
-                key={`stack-screen-${index}`}
-                name={screen.name}
-                component={screen.component}
-                options={screen.options}
-              />
-            ),
-          )}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        <NavigationContainer theme={NavigationDefaultTheme}>
+          <Stack.Navigator>
+            {[...(isLoggedIn ? protectedScreens : authenticationScreens)].map(
+              (screen, index) => (
+                <Stack.Screen
+                  key={`stack-screen-${index}`}
+                  name={screen.name}
+                  component={screen.component}
+                  options={screen.options}
+                />
+              ),
+            )}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
   );
 };
 
