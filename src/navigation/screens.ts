@@ -47,6 +47,16 @@ export const screens = [
     options: protectedScreenOptions,
     isProtected: true,
   },
+  {
+    name: 'DetailsScreen',
+    component: DashboardScreen,
+    options: {
+      ...protectedScreenOptions,
+      title: 'Screen for details',
+    },
+    isProtected: true,
+    title: 'details screen',
+  },
 ];
 
 export const getProtectedScreens = (listOfScreens: typeof screens) => {

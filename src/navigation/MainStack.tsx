@@ -4,6 +4,7 @@ import {auth} from '@store';
 import {useSelector} from 'react-redux';
 import {SplashScreen} from '@screens';
 import {screens, getProtectedScreens, getUnprotectedScreens} from './screens';
+import {CustomNavigationBar} from '@components';
 
 interface MainStackProps {}
 
@@ -23,7 +24,10 @@ export const MainStack: React.FunctionComponent<MainStackProps> = () => {
   }
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        header: (props) => <CustomNavigationBar {...props} />,
+      }}>
       {[...(isAuth ? protectedScreens : unprotectedScreens)].map(
         (screen, index) => (
           <Stack.Screen key={`stack-screen-${index}`} {...screen} />

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Provider as PaperProvider} from 'react-native-paper';
+import Feather from 'react-native-vector-icons/Feather';
 import {theme} from '@styles';
 import {
   NavigationContainer,
@@ -13,7 +14,11 @@ import {MainStack} from '@navigation';
 const App = () => {
   return (
     <Provider store={store}>
-      <PaperProvider theme={theme}>
+      <PaperProvider
+        theme={theme}
+        settings={{
+          icon: (props) => <Feather {...props} />,
+        }}>
         <NavigationContainer theme={NavigationDefaultTheme}>
           <MainStack />
         </NavigationContainer>

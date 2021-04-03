@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Logo, Header, Paragraph, Background} from '@components';
 import {useNavigation} from '@react-navigation/native';
-import {Button as PaperButton} from 'react-native-paper';
 
 interface HomeScreenProps {}
 

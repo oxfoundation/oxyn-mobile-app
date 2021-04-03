@@ -21,7 +21,7 @@ declare global {
 // secondary: '#BADA55',
 
 const commonThemeColors = {
-  primary: '#600EE6',
+  primary: '#BADA55',
   background: 'rgb(242, 242, 242)',
   card: 'rgb(255, 255, 255)',
   text: 'rgb(28, 28, 30)',
