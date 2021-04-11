@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {Animated, StyleSheet, ViewStyle, View} from 'react-native';
 import {theme} from '@styles';
+import {Header} from '@components';
 import LinearGradient from 'react-native-linear-gradient';
 
 const HEADER_MAX_HEIGHT = 240; // max header height
@@ -11,8 +12,6 @@ interface Props {
   containerStyle?: ViewStyle;
   headerContent: React.ReactNode;
   headerContentContainerStyle?: ViewStyle;
-  minimizedContent: React.ReactNode;
-  minimizedContentContainerStyle?: ViewStyle;
   children: React.ReactNode;
 }
 
@@ -21,8 +20,6 @@ const ScrollableHeader = ({
   children,
   headerContent,
   headerContentContainerStyle,
-  minimizedContent,
-  minimizedContentContainerStyle,
 }: Props) => {
   const scrollY = useRef(new Animated.Value(0)).current; // our animated value
 
@@ -33,8 +30,8 @@ const ScrollableHeader = ({
   });
 
   const fadeIn = scrollY.interpolate({
-    inputRange: [0, HEADER_SCROLL_DISTANCE / 1.8, HEADER_SCROLL_DISTANCE],
-    outputRange: [0, 0, 1],
+    inputRange: [0, HEADER_SCROLL_DISTANCE / 1.7, HEADER_SCROLL_DISTANCE],
+    outputRange: ['transparent', 'transparent', theme.colors.primary],
     extrapolate: 'clamp',
   });
 
@@ -82,14 +79,8 @@ const ScrollableHeader = ({
 
       {/* minimized content */}
       <Animated.View
-        style={[
-          styles.minimizedContent,
-          minimizedContentContainerStyle,
-          {
-            opacity: fadeIn,
-          },
-        ]}>
-        {minimizedContent}
+        style={[styles.minimizedHeader, {backgroundColor: fadeIn}]}>
+        <Header isTransparent />
       </Animated.View>
 
       {/* paddingTop: HEADER_MAX_HEIGHT - 32 */}
@@ -102,7 +93,7 @@ const ScrollableHeader = ({
         scrollEventThrottle={16}
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
-          {useNativeDriver: true},
+          {useNativeDriver: false},
         )}>
         {children}
       </Animated.ScrollView>
@@ -133,7 +124,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     zIndex: 1,
   },
-  minimizedContent: {
+  minimizedHeader: {
     position: 'absolute',
     top: 0,
     left: 0,
