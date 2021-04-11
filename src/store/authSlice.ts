@@ -7,7 +7,7 @@ interface AuthType {
 }
 
 const initialState: AuthType = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   token: undefined,
 };
 

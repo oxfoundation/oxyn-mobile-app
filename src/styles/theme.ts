@@ -5,6 +5,9 @@ declare global {
   namespace ReactNativePaper {
     interface ThemeColors {
       secondary: string;
+      gradientStart: string;
+      gradientMiddle: string;
+      gradientEnd: string;
       facebook: string;
       twitter: string;
       google: string;
@@ -12,16 +15,26 @@ declare global {
     }
     interface Theme {
       myOwnProperty: boolean;
+      size: {
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        xl: number;
+      };
     }
   }
 }
-
-// primary: '#84DD72',
-// accent: '#212529',
-// secondary: '#BADA55',
+// #54FFF3
+// #A365FF
+// #FF2968
 
 const commonThemeColors = {
-  primary: '#BADA55',
+  primary: '#A365FF',
+  gradientStart: '#54FFF3',
+  gradientMiddle: '#A365FF',
+  gradientEnd: '#FF2968',
+
   background: 'rgb(242, 242, 242)',
   card: 'rgb(255, 255, 255)',
   text: 'rgb(28, 28, 30)',
@@ -31,11 +44,11 @@ const commonThemeColors = {
 
 export const theme = {
   ...DefaultTheme,
-  roundness: 2,
+  roundness: 20,
   colors: {
     ...DefaultTheme.colors,
     ...commonThemeColors,
-    secondary: '#414757',
+    secondary: '#212529',
     error: '#f13a59',
     facebook: '#3b5998',
     twitter: '#0084b4',
@@ -44,6 +57,13 @@ export const theme = {
   },
   // Specify custom property
   myOwnProperty: true,
+  size: {
+    xs: 5,
+    sm: 10,
+    md: 25,
+    lg: 40,
+    xl: 60,
+  },
 };
 
 export const navigationTheme = {

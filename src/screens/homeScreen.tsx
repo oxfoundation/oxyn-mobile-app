@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Logo, Header, Paragraph, Background} from '@components';
+import {Button, Logo, Paragraph, Background} from '@components';
 import {useNavigation} from '@react-navigation/native';
 
 interface HomeScreenProps {}
@@ -10,7 +10,6 @@ const HomeScreen: React.FunctionComponent<HomeScreenProps> = () => {
     <>
       <Background>
         <Logo />
-        <Header>Login Template</Header>
 
         <Paragraph>
           The easiest way to start with your amazing application.

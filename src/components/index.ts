@@ -6,3 +6,6 @@ export {default as Logo} from './Logo';
 export {default as Paragraph} from './Paragraph';
 export {default as TextInput} from './TextInput';
 export {default as CustomNavigationBar} from './CustomNavigationBar';
+export {default as ScrollableHeader} from './ScrollableHeader';
+export {default as Card} from './Card';
+export {default as Section} from './Section';

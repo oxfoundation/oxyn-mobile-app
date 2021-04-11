@@ -44,7 +44,10 @@ export const screens = [
   {
     name: 'DashboardScreen',
     component: DashboardScreen,
-    options: protectedScreenOptions,
+    options: {
+      ...protectedScreenOptions,
+      headerShown: false,
+    },
     isProtected: true,
   },
   {
@@ -52,7 +55,6 @@ export const screens = [
     component: DashboardScreen,
     options: {
       ...protectedScreenOptions,
-      title: 'Screen for details',
     },
     isProtected: true,
     title: 'details screen',

@@ -1,22 +1,23 @@
 import React, {memo} from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {theme} from '@styles';
+import {Appbar} from 'react-native-paper';
 
 type Props = {
-  children: React.ReactNode;
+  title: string;
 };
 
-const Header = ({children}: Props) => (
-  <Text style={styles.header}>{children}</Text>
-);
+const Header = ({title}: Props) => {
+  // const _goBack = () => console.log('Went back');
 
-const styles = StyleSheet.create({
-  header: {
-    fontSize: 26,
-    color: theme.colors.primary,
-    fontWeight: 'bold',
-    paddingVertical: 14,
-  },
-});
+  const _handleMore = () => console.log('Shown more');
+
+  return (
+    <Appbar.Header>
+      {/* <Appbar.BackAction onPress={_goBack} /> */}
+      <Appbar.Action icon="bell" onPress={_handleMore} />
+      <Appbar.Content title={title} subtitle="Current Balance" />
+      <Appbar.Action icon="align-right" onPress={_handleMore} />
+    </Appbar.Header>
+  );
+};
 
 export default memo(Header);

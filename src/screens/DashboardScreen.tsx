@@ -1,34 +1,24 @@
 import React, {memo} from 'react';
-import {Background, Logo, Header, Paragraph, Button} from '@components';
-import {useAppDispatch} from '@hooks';
-import {auth} from '@store';
-import {useNavigation} from '@react-navigation/native';
+import {Text} from 'react-native';
+import {Header, ScrollableHeader, Card, Section} from '@components';
+import {Title, Paragraph} from 'react-native-paper';
+import {theme} from '@styles';
 
 const Dashboard = () => {
-  const dispatch = useAppDispatch();
-  const navigation = useNavigation();
-
+  const {size} = theme;
   return (
-    <Background>
-      <Logo />
-      <Header>Let’s start</Header>
-      <Paragraph>
-        Your amazing app starts here. Open you favourite code editor and start
-        editing this project.
-      </Paragraph>
-      <Button
-        mode="outlined"
-        onPress={() => navigation.navigate('DetailsScreen')}
-        title="Details"
-      />
-      <Button
-        mode="outlined"
-        onPress={() => {
-          dispatch(auth.action.logout());
-        }}
-        title="Logout"
-      />
-    </Background>
+    <ScrollableHeader
+      headerContent={<Text style={{fontSize: 30}}>$9.99</Text>}
+      minimizedContent={<Header title="$9.99" />}>
+      <Section resetTop style={{marginTop: -size.md}}>
+        <Card>
+          <Card.Content>
+            <Title>Card title</Title>
+            <Paragraph>Card content</Paragraph>
+          </Card.Content>
+        </Card>
+      </Section>
+    </ScrollableHeader>
   );
 };
 
