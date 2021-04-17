@@ -6,8 +6,8 @@ type Props = PaperCardType & {
   children: React.ReactNode;
 };
 
-const Card = ({children}: Props) => {
-  return <PaperCard>{children}</PaperCard>;
+const Card = ({children, ...props}: Props) => {
+  return <PaperCard {...props}>{children}</PaperCard>;
 };
 
 Card.Content = PaperCard.Content;

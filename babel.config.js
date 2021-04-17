@@ -14,7 +14,7 @@ module.exports = {
           '@styles': './src/styles',
           '@store': './src/store',
           '@utilities': './src/utilities',
-          '@views': './src/views',
+          '@sections': './src/sections',
           '@hooks': './src/hooks',
         },
       },

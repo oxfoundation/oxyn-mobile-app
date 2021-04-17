@@ -48,7 +48,7 @@
       "@styles": ["styles"],
       "@store": ["store"],
       "@utilities": ["utilities"],
-      "@views": ["views"],
+      "@sections": ["sections"],
       "@hooks": ["hooks"],
       "test/*": ["test/*"],
       "underscore": ["lodash"]
