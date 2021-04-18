@@ -3,6 +3,7 @@ import {Appbar, Badge} from 'react-native-paper';
 
 const CustomNavigationBar = (props) => {
   const {navigation, progress, route, options} = props;
+  console.log('navigation', navigation);
 
   let leftComponent;
 
@@ -16,8 +17,8 @@ const CustomNavigationBar = (props) => {
 
   return (
     <Appbar.Header>
-      <Badge visible={true} size={10} />
-      {leftComponent}
+      {/* <Badge visible={true} size={10} /> */}
+      {/* {leftComponent} */}
       <Appbar.Content title={options.title} />
       <Appbar.Action icon="align-right" onPress={() => {}} />
     </Appbar.Header>

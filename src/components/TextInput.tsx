@@ -12,6 +12,7 @@ const TextInput = ({errorText, ...props}: Props) => (
       selectionColor={theme.colors.primary}
       underlineColor="transparent"
       mode="outlined"
+      // dense={true}
       {...props}
     />
     {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
@@ -21,10 +22,11 @@ const TextInput = ({errorText, ...props}: Props) => (
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginVertical: 12,
+    marginVertical: 7,
   },
   input: {
     backgroundColor: theme.colors.surface,
+    // height: 40,
   },
   error: {
     fontSize: 14,

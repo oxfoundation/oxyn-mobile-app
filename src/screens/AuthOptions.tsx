@@ -2,9 +2,9 @@ import React from 'react';
 import {Button, Logo, Paragraph, Background} from '@components';
 import {useNavigation} from '@react-navigation/native';
 
-interface HomeScreenProps {}
+interface AuthOptionsScreenProps {}
 
-const HomeScreen: React.FunctionComponent<HomeScreenProps> = () => {
+const AuthOptionsScreen: React.FunctionComponent<AuthOptionsScreenProps> = () => {
   const navigation = useNavigation();
   return (
     <>
@@ -43,4 +43,4 @@ const HomeScreen: React.FunctionComponent<HomeScreenProps> = () => {
   );
 };
 
-export default HomeScreen;
+export default AuthOptionsScreen;

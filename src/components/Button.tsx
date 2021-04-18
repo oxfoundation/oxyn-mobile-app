@@ -1,6 +1,6 @@
 import React, {memo, ComponentProps} from 'react';
 import {StyleSheet} from 'react-native';
-import {Button as PaperButton} from 'react-native-paper';
+import {Button as PaperButton, Colors} from 'react-native-paper';
 import {theme} from '@styles';
 
 type PaperButtonType = ComponentProps<typeof PaperButton>;
@@ -12,10 +12,10 @@ type Props = Omit<PaperButtonType, 'children'> & {
 const Button = ({mode, style, title, color, ...props}: Props) => {
   // define theme color
   let mainThemeColor;
+
   switch (color) {
     case 'facebook':
       mainThemeColor = theme.colors?.facebook;
-
       break;
     case 'twitter':
       mainThemeColor = theme.colors?.twitter;
@@ -32,10 +32,17 @@ const Button = ({mode, style, title, color, ...props}: Props) => {
       break;
   }
 
+  let buttonStyle = {};
+  if (mode === 'outlined') {
+    buttonStyle = {
+      backgroundColor: Colors.white,
+    };
+  }
+
   return (
     <PaperButton
       color={mainThemeColor}
-      style={[styles.button, style]}
+      style={[styles.button, buttonStyle, style]}
       labelStyle={styles.text}
       mode={mode}
       {...props}>

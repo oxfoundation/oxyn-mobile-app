@@ -1,25 +1,46 @@
 import {
   DashboardScreen,
   ForgotPasswordScreen,
-  HomeScreen,
+  AuthOptions,
   RegisterScreen,
   LoginScreen,
 } from '@screens';
 import {Colors} from 'react-native-paper';
 
-const unprotectedScreenOptions = {
+export const unprotectedScreenOptions = {
   headerShown: false,
   cardStyle: {backgroundColor: Colors.white},
 };
 
-const protectedScreenOptions = {
+export const protectedScreenOptions = {
   cardStyle: {backgroundColor: Colors.white},
 };
 
-export const screens = [
+export const protectedScreens = [
   {
-    name: 'HomeScreen',
-    component: HomeScreen,
+    name: 'DashboardScreen',
+    component: DashboardScreen,
+    // options: {
+    //   ...protectedScreenOptions,
+    //   headerShown: false,
+    // },
+    // isProtected: true,
+  },
+  {
+    name: 'DetailsScreen',
+    component: AuthOptions,
+    // options: {
+    //   ...protectedScreenOptions,
+    // },
+    // isProtected: true,
+    title: 'details screen',
+  },
+];
+
+export const unprotectedScreens = [
+  {
+    name: 'AuthOptions',
+    component: AuthOptions,
     options: unprotectedScreenOptions,
     isProtected: false,
   },
@@ -41,29 +62,4 @@ export const screens = [
     options: unprotectedScreenOptions,
     isProtected: false,
   },
-  {
-    name: 'DashboardScreen',
-    component: DashboardScreen,
-    options: {
-      ...protectedScreenOptions,
-      headerShown: false,
-    },
-    isProtected: true,
-  },
-  {
-    name: 'DetailsScreen',
-    component: DashboardScreen,
-    options: {
-      ...protectedScreenOptions,
-    },
-    isProtected: true,
-    title: 'details screen',
-  },
 ];
-
-export const getProtectedScreens = (listOfScreens: typeof screens) => {
-  return listOfScreens.filter((screen) => screen.isProtected);
-};
-export const getUnprotectedScreens = (listOfScreens: typeof screens) => {
-  return listOfScreens.filter((screen) => !screen.isProtected);
-};

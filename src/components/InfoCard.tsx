@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-
 import {Card, Button} from '@components';
 
 interface Props {

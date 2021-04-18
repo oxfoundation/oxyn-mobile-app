@@ -31,6 +31,7 @@ declare global {
 
 const commonThemeColors = {
   primary: '#A365FF',
+  accent: '#54FFF3',
   gradientStart: '#54FFF3',
   gradientMiddle: '#A365FF',
   gradientEnd: '#FF2968',
@@ -68,5 +69,7 @@ export const theme = {
 
 export const navigationTheme = {
   ...DefaultNavigationTheme,
-  ...commonThemeColors,
+  colors: {
+    ...commonThemeColors,
+  },
 };

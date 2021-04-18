@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {
   Background,
   Logo,
-  Header,
+  HeaderTitle,
   Button,
   TextInput,
   BackButton,
@@ -36,11 +36,11 @@ const RegisterScreen = () => {
 
   return (
     <Background>
-      <BackButton goBack={() => navigation.navigate('HomeScreen')} />
+      <BackButton goBack={() => navigation.navigate('AuthOptions')} />
 
       <Logo />
 
-      <Header>Create Account</Header>
+      <HeaderTitle>Create Account</HeaderTitle>
 
       <TextInput
         label="Name"

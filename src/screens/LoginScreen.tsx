@@ -3,7 +3,7 @@ import {TouchableOpacity, StyleSheet, Text, View} from 'react-native';
 import {
   Background,
   Logo,
-  Header,
+  HeaderTitle,
   Button,
   TextInput,
   BackButton,
@@ -37,11 +37,11 @@ const LoginScreen = () => {
 
   return (
     <Background>
-      <BackButton goBack={() => navigation.navigate('HomeScreen')} />
+      <BackButton goBack={() => navigation.navigate('AuthOptions')} />
 
       <Logo />
 
-      <Header>Welcome back.</Header>
+      <HeaderTitle>Welcome back.</HeaderTitle>
 
       <TextInput
         label="Email"

@@ -1,10 +1,16 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {auth} from '@store';
 import {useSelector} from 'react-redux';
 import {SplashScreen} from '@screens';
-import {screens, getProtectedScreens, getUnprotectedScreens} from './screens';
-import {CustomNavigationBar} from '@components';
+import {CustomDrawerContent} from '@components';
+import {
+  createDrawerNavigator,
+  DrawerContentComponentProps,
+} from '@react-navigation/drawer';
+import {protectedScreens, unprotectedScreens} from './screens';
+
+const Drawer = createDrawerNavigator();
 
 interface MainStackProps {}
 
@@ -14,25 +20,40 @@ export const MainStack: React.FunctionComponent<MainStackProps> = () => {
   const isAuth = useSelector(auth.get.isAuthenticated);
   const [isLoading] = useState(false);
 
-  const protectedScreens = useMemo(() => getProtectedScreens(screens), []);
-  const unprotectedScreens = useMemo(() => getUnprotectedScreens(screens), []);
-
   //TODO: needs to be replaced with loader
   if (isLoading) {
     // We haven't finished checking for the token yet
     return <SplashScreen />;
   }
 
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        header: (props) => <CustomNavigationBar {...props} />,
-      }}>
-      {[...(isAuth ? protectedScreens : unprotectedScreens)].map(
-        (screen, index) => (
+  if (isAuth) {
+    return (
+      <Drawer.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          drawerPosition: 'right',
+          headerShown: false,
+          swipeEnabled: true,
+        }}
+        drawerContent={(props: DrawerContentComponentProps) => (
+          <CustomDrawerContent {...props} />
+        )}>
+        {protectedScreens.map((screens, index) => (
+          <Drawer.Screen
+            name={screens.name}
+            component={screens.component}
+            key={`drawer-screen-${index}`}
+          />
+        ))}
+      </Drawer.Navigator>
+    );
+  } else {
+    return (
+      <Stack.Navigator>
+        {unprotectedScreens.map((screen, index) => (
           <Stack.Screen key={`stack-screen-${index}`} {...screen} />
-        ),
-      )}
-    </Stack.Navigator>
-  );
+        ))}
+      </Stack.Navigator>
+    );
+  }
 };

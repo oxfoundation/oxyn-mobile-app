@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
-import {Text} from 'react-native';
-import {ScrollableHeader, Card, Section, InfoCard} from '@components';
+import {Text, StyleSheet} from 'react-native';
+import {ScrollableHeader, Card, Section, InfoCard, Screen} from '@components';
 import {Title, Paragraph, List, Avatar} from 'react-native-paper';
 import {theme} from '@styles';
 
@@ -41,77 +41,89 @@ const Dashboard = () => {
   ];
 
   return (
-    <ScrollableHeader headerContent={<Text style={{fontSize: 30}}>$9.99</Text>}>
-      <Section resetTop style={{marginTop: -size.md}}>
-        <InfoCard title="Latest transactions" actionTitle="view all">
-          {payload.map((item, index) => (
-            <List.Item
-              key={`last-transactions-${index}`}
-              title={item.title}
-              description={item.status}
-              left={() => (
-                <Avatar.Image
-                  size={50}
-                  source={{
-                    uri: item.thumbnail,
-                  }}
-                />
-              )}
-              right={() => <Text>${item.amount}</Text>}
-            />
-          ))}
-        </InfoCard>
-      </Section>
-      <Section>
-        <Card>
-          <Card.Content>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
-          </Card.Content>
-        </Card>
-      </Section>
-      <Section>
-        <Card>
-          <Card.Content>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
-          </Card.Content>
-        </Card>
-      </Section>
-      <Section>
-        <Card>
-          <Card.Content>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
-          </Card.Content>
-        </Card>
-      </Section>
-      <Section>
-        <Card>
-          <Card.Content>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
-          </Card.Content>
-        </Card>
-      </Section>
-      <Section>
-        <Card>
-          <Card.Content>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
-          </Card.Content>
-        </Card>
-      </Section>
-      <Section>
-        <Card>
-          <Card.Content>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
-          </Card.Content>
-        </Card>
-      </Section>
-    </ScrollableHeader>
+    <Screen>
+      <ScrollableHeader
+        headerContent={<Text style={styles.headerContainer}>$9.99</Text>}>
+        <Section resetTop style={{marginTop: -size.md}}>
+          <InfoCard
+            title="Latest transactions"
+            actionTitle="view all"
+            action={() => console.log('some')}>
+            {payload.map((item, index) => (
+              <List.Item
+                key={`last-transactions-${index}`}
+                title={item.title}
+                description={item.status}
+                left={() => (
+                  <Avatar.Image
+                    size={50}
+                    source={{
+                      uri: item.thumbnail,
+                    }}
+                  />
+                )}
+                right={() => <Text>${item.amount}</Text>}
+              />
+            ))}
+          </InfoCard>
+        </Section>
+        <Section>
+          <Card>
+            <Card.Content>
+              <Title>Card title</Title>
+              <Paragraph>Card content</Paragraph>
+            </Card.Content>
+          </Card>
+        </Section>
+        <Section>
+          <Card>
+            <Card.Content>
+              <Title>Card title</Title>
+              <Paragraph>Card content</Paragraph>
+            </Card.Content>
+          </Card>
+        </Section>
+        <Section>
+          <Card>
+            <Card.Content>
+              <Title>Card title</Title>
+              <Paragraph>Card content</Paragraph>
+            </Card.Content>
+          </Card>
+        </Section>
+        <Section>
+          <Card>
+            <Card.Content>
+              <Title>Card title</Title>
+              <Paragraph>Card content</Paragraph>
+            </Card.Content>
+          </Card>
+        </Section>
+        <Section>
+          <Card>
+            <Card.Content>
+              <Title>Card title</Title>
+              <Paragraph>Card content</Paragraph>
+            </Card.Content>
+          </Card>
+        </Section>
+        <Section>
+          <Card>
+            <Card.Content>
+              <Title>Card title</Title>
+              <Paragraph>Card content</Paragraph>
+            </Card.Content>
+          </Card>
+        </Section>
+      </ScrollableHeader>
+    </Screen>
   );
 };
+
+const styles = StyleSheet.create({
+  headerContainer: {
+    fontSize: 30,
+  },
+});
 
 export default memo(Dashboard);

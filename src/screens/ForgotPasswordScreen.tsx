@@ -2,10 +2,17 @@ import React, {memo, useState} from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {emailValidator} from '@utilities';
-import {Background, BackButton, Logo, Header, TextInput} from '@components';
+import {
+  Background,
+  BackButton,
+  Logo,
+  HeaderTitle,
+  TextInput,
+  Button,
+} from '@components';
 
 import {theme} from '@styles';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 import {useNavigation} from '@react-navigation/core';
 
 const ForgotPasswordScreen = () => {
@@ -29,7 +36,7 @@ const ForgotPasswordScreen = () => {
 
       <Logo />
 
-      <Header>Restore Password</Header>
+      <HeaderTitle>Restore Password</HeaderTitle>
 
       <TextInput
         label="E-mail address"
