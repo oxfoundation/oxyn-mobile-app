@@ -4,6 +4,7 @@ import {
   AuthOptions,
   RegisterScreen,
   LoginScreen,
+  AddItem,
 } from '@screens';
 import {Colors} from 'react-native-paper';
 
@@ -34,6 +35,12 @@ export const protectedScreens = [
     // },
     // isProtected: true,
     title: 'details screen',
+  },
+  {
+    name: 'AddItem',
+    component: AddItem,
+    title: 'Add New Item',
+    label: 'Add New Item',
   },
 ];
 

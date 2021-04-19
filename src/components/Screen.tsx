@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {FAB} from 'react-native-paper';
 import {theme} from '@styles';
+import {useNavigation} from '@react-navigation/core';
 
 interface Props {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const Screen = ({children, hideButton = false, ...props}: Props) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container} {...props}>
       <FAB
@@ -16,7 +18,7 @@ const Screen = ({children, hideButton = false, ...props}: Props) => {
         style={styles.fab}
         small
         icon="plus"
-        onPress={() => console.log('Pressed')}
+        onPress={() => navigation.navigate('AddItem')}
       />
       {children}
     </View>

@@ -42,6 +42,9 @@ export const MainStack: React.FunctionComponent<MainStackProps> = () => {
           <Drawer.Screen
             name={screens.name}
             component={screens.component}
+            options={{
+              drawerLabel: screens.title,
+            }}
             key={`drawer-screen-${index}`}
           />
         ))}
