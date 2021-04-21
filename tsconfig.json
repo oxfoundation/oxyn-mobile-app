@@ -46,7 +46,7 @@
       "@navigation": ["navigation"],
       "@services": ["services"],
       "@styles": ["styles"],
-      "@store": ["store"],
+      "@gql": ["gql"],
       "@utilities": ["utilities"],
       "@sections": ["sections"],
       "@hooks": ["hooks"],

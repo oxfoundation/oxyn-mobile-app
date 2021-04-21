@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {auth} from '@store';
-import {useSelector} from 'react-redux';
 import {SplashScreen} from '@screens';
 import {CustomDrawerContent} from '@components';
 import {
@@ -17,7 +15,7 @@ interface MainStackProps {}
 const Stack = createStackNavigator();
 
 export const MainStack: React.FunctionComponent<MainStackProps> = () => {
-  const isAuth = useSelector(auth.get.isAuthenticated);
+  const isAuth = true; //TODO: replace with apollo
   const [isLoading] = useState(false);
 
   //TODO: needs to be replaced with loader

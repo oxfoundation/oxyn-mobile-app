@@ -9,8 +9,7 @@ import {
   BackButton,
 } from '@components';
 
-import {useAppDispatch} from '@hooks';
-import {auth} from '@store';
+// import {auth} from '@gql';
 
 import {theme} from '@styles';
 import {emailValidator, passwordValidator} from '@utilities';
@@ -18,7 +17,6 @@ import {useNavigation} from '@react-navigation/core';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState({value: '', error: ''});
   const [password, setPassword] = useState({value: '', error: ''});
@@ -32,7 +30,6 @@ const LoginScreen = () => {
       setPassword({...password, error: passwordError});
       return;
     }
-    dispatch(auth.action.login('userToken'));
   };
 
   return (
